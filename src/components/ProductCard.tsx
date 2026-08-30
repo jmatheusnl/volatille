@@ -4,9 +4,10 @@ import './ProductCard.css'
 
 type ProductCardProps = {
   product: Product
+  onAddToCart?: (product: Product) => void
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const imageSrc = product.image.startsWith('/')
     ? `${import.meta.env.BASE_URL}${product.image.slice(1)}`
     : product.image
@@ -25,7 +26,19 @@ export function ProductCard({ product }: ProductCardProps) {
             <li key={category}>{category}</li>
           ))}
         </ul>
-        <p className="product-card__price">{formatPrice(product.price)}</p>
+        <div className="product-card__footer">
+          <p className="product-card__price">{formatPrice(product.price)}</p>
+          {onAddToCart && (
+            <button
+              type="button"
+              className="product-card__add-btn"
+              onClick={() => onAddToCart(product)}
+              aria-label={`Adicionar difusor ${product.scent} ${product.size} à sacola`}
+            >
+              Adicionar
+            </button>
+          )}
+        </div>
       </div>
     </article>
   )

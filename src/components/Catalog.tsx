@@ -10,6 +10,7 @@ import './Catalog.css'
 type CatalogProps = {
   products: Product[]
   status: CatalogStatus
+  onAddToCart?: (product: Product) => void
 }
 
 function uniqueCategories(products: Product[]): string[] {
@@ -26,7 +27,7 @@ function uniqueSizes(products: Product[]): string[] {
   return [...new Set(products.map((product) => product.size))]
 }
 
-export function Catalog({ products, status }: CatalogProps) {
+export function Catalog({ products, status, onAddToCart }: CatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -104,7 +105,7 @@ export function Catalog({ products, status }: CatalogProps) {
             <ul className="catalog__grid">
               {visibleProducts.map((product) => (
                 <li key={product.id}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} onAddToCart={onAddToCart} />
                 </li>
               ))}
             </ul>

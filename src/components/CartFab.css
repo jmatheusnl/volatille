@@ -1,0 +1,87 @@
+.cart-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 90;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(29, 53, 87, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.cart-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(29, 53, 87, 0.25);
+}
+
+.cart-fab:active {
+  transform: translateY(0);
+}
+
+.cart-fab:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.cart-fab__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+/* Estado Vazio: Discreto, fundo paper com borda e ícone em muted */
+.cart-fab--empty {
+  background: var(--paper);
+  border: 1px solid var(--muted);
+  color: var(--muted);
+}
+
+.cart-fab--empty:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+/* Estado com Itens: Fundo ouro com ícone e badge em navy (alto contraste) */
+.cart-fab--has-items {
+  background: var(--gold);
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+}
+
+.cart-fab__badge {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  background: var(--navy);
+  color: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 700;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--gold);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .cart-fab {
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .cart-fab__icon {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+}
