@@ -1,0 +1,31 @@
+name: Deploy to AWS (S3 + CloudFront)
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::837749699431:role/github-actions-volatille-role
+          aws-region: sa-east-1
+
+      - run: aws s3 sync dist/ s3://volatille-loja --delete
+
+      - run: aws cloudfront create-invalidation --distribution-id E3S56ZN2YYH0Y --paths "/*"
