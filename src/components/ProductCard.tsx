@@ -15,7 +15,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <article className="product-card">
       <div className="product-card__photo">
-        <img src={imageSrc} alt={`Difusor ${product.scent} ${product.size}`} />
+        <img
+          src={imageSrc}
+          alt={`Difusor ${product.scent} ${product.size}`}
+          width={1842}
+          height={2304}
+        />
       </div>
       <div className="product-card__body">
         <p className="product-card__size">{product.size}</p>

@@ -105,7 +105,7 @@
 }
 
 .cart-modal__confirmation-order-id strong {
-  color: var(--gold);
+  color: var(--gold-contrast);
 }
 
 /* Resumo estruturado do pedido */
@@ -168,7 +168,7 @@
 
 .cart-modal__order-total strong {
   font-size: 0.95rem;
-  color: var(--gold);
+  color: var(--gold-contrast);
 }
 
 /* Bloco expansível com o Payload JSON para demonstração */
@@ -458,7 +458,7 @@
   margin: 0;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--gold);
+  color: var(--gold-contrast);
   letter-spacing: 0.05em;
 }
 

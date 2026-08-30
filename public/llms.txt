@@ -1,0 +1,10 @@
+# Volatille
+
+> Loja online de difusores de ambiente artesanais. Aromas que acolhem.
+
+Volatille é uma marca de difusores de ambiente feitos à mão, com aromas suaves, florais, cítricos e herbais.
+
+## Páginas
+
+- [Vitrine e catálogo completo](./): produtos, preços, descrições e filtro por categoria.
+- [Como eu fiz esse site](./como-fiz): vídeo explicando a arquitetura, as decisões técnicas e o deploy do projeto.
