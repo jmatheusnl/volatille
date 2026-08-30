@@ -1,0 +1,351 @@
+.comofiz {
+  width: 100%;
+  padding-bottom: 4rem;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.comofiz__container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Hero / Apresentação */
+.comofiz__hero {
+  padding: 2.5rem 0 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(168, 192, 214, 0.15) 0%, rgba(247, 244, 238, 0) 100%);
+  position: relative;
+}
+
+.comofiz__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.comofiz__back-btn:hover {
+  background: var(--paper);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateX(-3px);
+}
+
+.comofiz__hero h1 {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin: 0.5rem 0 0.4rem;
+  line-height: 1.15;
+}
+
+.comofiz__subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.comofiz__content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Seções */
+.comofiz__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comofiz__section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comofiz__badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(210, 172, 71, 0.18);
+  color: #8c6a12;
+  border: 1px solid rgba(210, 172, 71, 0.4);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+.comofiz__section-header h2 {
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+
+.comofiz__section-lead {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: 800px;
+  line-height: 1.55;
+}
+
+/* Card do Vídeo */
+.comofiz__video-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(29, 53, 87, 0.04);
+}
+
+.comofiz__video-player-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0f1c2e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.comofiz__video-player,
+.comofiz__video-player-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+
+/* Grid das 5 Perguntas */
+.comofiz__questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.comofiz__question-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.comofiz__question-card--wide {
+  grid-column: 1 / -1;
+}
+
+.comofiz__question-num {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.comofiz__question-card h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin: 0;
+}
+
+.comofiz__question-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.comofiz__question-card code {
+  font-size: 0.8em;
+  background: rgba(168, 192, 214, 0.2);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  color: var(--navy);
+}
+
+/* Grid de Diagramas BFF */
+.comofiz__diagrams-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.comofiz__diagram-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(29, 53, 87, 0.04);
+}
+
+.comofiz__diagram-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.comofiz__diagram-card-header h3 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  color: var(--navy);
+  margin: 0;
+}
+
+.comofiz__tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(168, 192, 214, 0.25);
+  color: var(--navy);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.comofiz__diagram-description {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.comofiz__diagram-description code {
+  font-size: 0.85em;
+  background: rgba(168, 192, 214, 0.2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  color: var(--navy);
+}
+
+.comofiz__diagram-image-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.comofiz__diagram-img {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+}
+
+/* Rodapé / CTA de Voltar */
+.comofiz__footer-cta {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.comofiz__cta-button {
+  background: var(--navy);
+  color: var(--paper);
+  border: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 0.95rem 2.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(29, 53, 87, 0.2);
+  transition: all 0.2s ease;
+}
+
+.comofiz__cta-button:hover {
+  background: #14243b;
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 53, 87, 0.28);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .comofiz__hero h1 {
+    font-size: 3rem;
+  }
+
+  .comofiz__hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .comofiz__video-card {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .comofiz__questions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comofiz__hero h1 {
+    font-size: 2rem;
+  }
+
+  .comofiz__diagram-card {
+    padding: 1rem;
+  }
+
+  .comofiz__diagram-image-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+/* Estado de vídeo pendente (YouTube ainda sem ID definido) */
+.comofiz__video-pending {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.25rem;
+}
+
+.comofiz__video-pending-label {
+  background: rgba(15, 28, 46, 0.7);
+  color: var(--paper);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+}
