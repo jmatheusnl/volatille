@@ -19,7 +19,7 @@
 }
 
 .category-filter button:hover {
-  border-color: var(--navy);
+  border-color: var(--gold);
 }
 
 .category-filter button.is-active {

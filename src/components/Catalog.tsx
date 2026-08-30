@@ -3,6 +3,8 @@ import type { Product } from '../types/Product'
 import type { CatalogStatus } from '../hooks/useProducts'
 import { CategoryFilter } from './CategoryFilter'
 import { ProductCard } from './ProductCard'
+import { SearchInput } from './SearchInput'
+import { SizeFilter } from './SizeFilter'
 import './Catalog.css'
 
 type CatalogProps = {
@@ -20,21 +22,32 @@ function uniqueCategories(products: Product[]): string[] {
   return [...names].sort((a, b) => a.localeCompare(b, 'pt-BR'))
 }
 
+function uniqueSizes(products: Product[]): string[] {
+  return [...new Set(products.map((product) => product.size))]
+}
+
 export function Catalog({ products, status }: CatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const categories = useMemo(() => uniqueCategories(products), [products])
+  const sizeOptions = useMemo(() => uniqueSizes(products), [products])
+  const normalizedSearch = searchTerm.trim().toLowerCase()
 
   // A ordem do JSON já coloca 30ml e 100ml do mesmo aroma em sequência;
   // o filtro só esconde itens, sem reordenar, para os pares permanecerem lado a lado.
   const visibleProducts = useMemo(() => {
-    if (selectedCategory === null) {
-      return products
-    }
-    return products.filter((product) =>
-      product.categories.includes(selectedCategory),
-    )
-  }, [products, selectedCategory])
+    return products.filter((product) => {
+      const matchesCategory =
+        selectedCategory === null || product.categories.includes(selectedCategory)
+      const matchesSize = selectedSize === null || product.size === selectedSize
+      const matchesSearch =
+        normalizedSearch === '' || product.scent.toLowerCase().includes(normalizedSearch)
+
+      return matchesCategory && matchesSize && matchesSearch
+    })
+  }, [products, selectedCategory, selectedSize, normalizedSearch])
 
   return (
     <section id="catalogo" className="catalog" aria-labelledby="catalog-title">
@@ -63,15 +76,29 @@ export function Catalog({ products, status }: CatalogProps) {
 
       {status === 'ready' && (
         <>
-          <CategoryFilter
-            categories={categories}
-            selected={selectedCategory}
-            onSelect={setSelectedCategory}
-          />
+          <SearchInput value={searchTerm} onChange={setSearchTerm} />
+
+          <div className="catalog__filter-group">
+            <span className="catalog__group-label">Categoria</span>
+            <CategoryFilter
+              categories={categories}
+              selected={selectedCategory}
+              onSelect={setSelectedCategory}
+            />
+          </div>
+
+          <div className="catalog__filter-group">
+            <span className="catalog__group-label">Tamanho</span>
+            <SizeFilter
+              sizes={sizeOptions}
+              selected={selectedSize}
+              onSelect={setSelectedSize}
+            />
+          </div>
 
           {visibleProducts.length === 0 ? (
             <p className="catalog__status">
-              Nenhum difusor encontrado nesta categoria.
+              Nenhum difusor encontrado com os filtros atuais.
             </p>
           ) : (
             <ul className="catalog__grid">

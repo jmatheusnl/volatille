@@ -8,7 +8,7 @@
 
 .product-card__photo {
   background: #fff;
-  border-top: 0.7rem solid #fff;
+  padding: 0.7rem 0.7rem 0;
   aspect-ratio: 4 / 5;
   overflow: hidden;
 }
@@ -17,6 +17,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
 .product-card__body {

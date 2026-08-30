@@ -25,6 +25,21 @@
   color: var(--muted);
 }
 
+.catalog__filter-group {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.catalog__group-label {
+  display: block;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
 .catalog__status {
   text-align: center;
   color: var(--muted);
