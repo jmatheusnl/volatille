@@ -27,7 +27,11 @@ jobs:
           aws-region: sa-east-1
 
       # Arquivos gerais.
+<<<<<<< HEAD
       # index.html, products.json, assets, images e fonts são tratados separadamente.
+=======
+      # index.html, products.json, assets e images são tratados separadamente.
+>>>>>>> 8ec99225f9ad199d92cdab5344c6049a19033c75
       - run: |
           aws s3 sync dist/ s3://volatille-loja \
             --delete \
