@@ -57,5 +57,5 @@ jobs:
       # Garante que o CloudFront não mantenha versões antigas após o deploy.
       - run: |
           aws cloudfront create-invalidation \
-            --distribution-id E3S56ZN2YYH0 \
+            --distribution-id E3S56ZN2YYH0Y \
             --paths "/*"
