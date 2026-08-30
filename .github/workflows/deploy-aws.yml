@@ -26,9 +26,8 @@ jobs:
           role-to-assume: arn:aws:iam::837749699431:role/github-actions-volatille-role
           aws-region: sa-east-1
 
-      # Assets com nomes gerados pelo Vite podem ficar em cache por 1 ano.
-      # index.html e products.json são tratados separadamente para não ficarem
-      # presos em cache após um novo deploy.
+      # Arquivos gerais.
+      # index.html, products.json, assets, images e fonts são tratados separadamente.
       - run: |
           aws s3 sync dist/ s3://volatille-loja \
             --delete \
@@ -36,25 +35,43 @@ jobs:
             --exclude "index.html" \
             --exclude "products.json" \
             --exclude "assets/*" \
-            --exclude "images/*"
+            --exclude "images/*" \
+            --exclude "fonts/*"
 
+      # index.html nunca deve ficar preso em cache.
+      - run: |
           aws s3 cp dist/index.html s3://volatille-loja/index.html \
             --cache-control "no-cache, no-store, must-revalidate" \
             --content-type "text/html"
 
+      # products.json pode ficar em cache por 5 minutos.
+      - run: |
           aws s3 cp dist/products.json s3://volatille-loja/products.json \
             --cache-control "public, max-age=300" \
             --content-type "application/json"
 
-          aws s3 cp dist/assets/ s3://volatille-loja/assets/ \
-            --recursive \
+      # Assets gerados pelo Vite possuem hash no nome.
+      # Podem ficar em cache por 1 ano.
+      - run: |
+          aws s3 sync dist/assets/ s3://volatille-loja/assets/ \
+            --delete \
             --cache-control "public, max-age=31536000, immutable"
 
-          aws s3 cp dist/images/ s3://volatille-loja/images/ \
-            --recursive \
+      # Imagens podem ficar em cache por 1 ano.
+      - run: |
+          aws s3 sync dist/images/ s3://volatille-loja/images/ \
+            --delete \
             --cache-control "public, max-age=31536000"
 
-      # Garante que o CloudFront não mantenha versões antigas após o deploy.
+      # Fontes não mudam de nome entre builds — podem ficar em cache por 1 ano.
+      - run: |
+          aws s3 sync dist/fonts/ s3://volatille-loja/fonts/ \
+            --delete \
+            --cache-control "public, max-age=31536000, immutable"
+
+      # O diretório video é preservado no bucket.
+
+      # Garante que o CloudFront não mantenha versões antigas.
       - run: |
           aws cloudfront create-invalidation \
             --distribution-id E3S56ZN2YYH0Y \
