@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cha-branco-30ml",
+    "scent": "Chá Branco",
+    "description": "Um aroma suave e delicado, que acolhe o ambiente sem pesar. Ideal para quem busca leveza no dia a dia, em qualquer cômodo da casa.",
+    "size": "30ml",
+    "price": 13,
+    "categories": ["Suaves"],
+    "image": "/images/products/cha-branco-30ml.jpg"
+  },
+  {
+    "id": "cha-branco-100ml",
+    "scent": "Chá Branco",
+    "description": "Um aroma suave e delicado, que acolhe o ambiente sem pesar. Ideal para quem busca leveza no dia a dia, em qualquer cômodo da casa.",
+    "size": "100ml",
+    "price": 30,
+    "categories": ["Suaves"],
+    "image": "/images/products/cha-branco-100ml.jpg"
+  },
+  {
+    "id": "flor-de-laranjeira-30ml",
+    "scent": "Flor de Laranjeira",
+    "description": "Floral com um toque cítrico natural, traz frescor e delicadeza para qualquer cômodo da casa. Combina com momentos tranquilos, do início ao fim do dia.",
+    "size": "30ml",
+    "price": 13,
+    "categories": ["Florais", "Cítricos"],
+    "image": "/images/products/flor-de-laranjeira-30ml.jpg"
+  },
+  {
+    "id": "flor-de-laranjeira-100ml",
+    "scent": "Flor de Laranjeira",
+    "description": "Floral com um toque cítrico natural, traz frescor e delicadeza para qualquer cômodo da casa. Combina com momentos tranquilos, do início ao fim do dia.",
+    "size": "100ml",
+    "price": 30,
+    "categories": ["Florais", "Cítricos"],
+    "image": "/images/products/flor-de-laranjeira-100ml.jpg"
+  },
+  {
+    "id": "capim-limao-e-alecrim-30ml",
+    "scent": "Capim-limão & Alecrim",
+    "description": "Combinação cítrica e herbal que desperta os sentidos — energia e frescor em um só aroma. Ótimo para dar vida a ambientes de convívio e trabalho.",
+    "size": "30ml",
+    "price": 13,
+    "categories": ["Cítricos", "Herbais"],
+    "image": "/images/products/capim-limao-e-alecrim-30ml.jpg"
+  },
+  {
+    "id": "capim-limao-e-alecrim-100ml",
+    "scent": "Capim-limão & Alecrim",
+    "description": "Combinação cítrica e herbal que desperta os sentidos — energia e frescor em um só aroma. Ótimo para dar vida a ambientes de convívio e trabalho.",
+    "size": "100ml",
+    "price": 30,
+    "categories": ["Cítricos", "Herbais"],
+    "image": "/images/products/capim-limao-e-alecrim-100ml.jpg"
+  },
+  {
+    "id": "alecrim-e-lavanda-30ml",
+    "scent": "Alecrim & Lavanda",
+    "description": "Encontro herbal e floral que traz calma e aconchego, perfeito para momentos de relaxamento. Uma boa companhia para fechar o dia com leveza.",
+    "size": "30ml",
+    "price": 13,
+    "categories": ["Herbais", "Florais"],
+    "image": "/images/products/alecrim-e-lavanda-30ml.jpg"
+  },
+  {
+    "id": "alecrim-e-lavanda-100ml",
+    "scent": "Alecrim & Lavanda",
+    "description": "Encontro herbal e floral que traz calma e aconchego, perfeito para momentos de relaxamento. Uma boa companhia para fechar o dia com leveza.",
+    "size": "100ml",
+    "price": 30,
+    "categories": ["Herbais", "Florais"],
+    "image": "/images/products/alecrim-e-lavanda-100ml.jpg"
+  }
+]

@@ -1,0 +1,29 @@
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0 0 2.25rem;
+}
+
+.category-filter button {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--mist);
+  color: var(--navy);
+  padding: 0.5rem 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.category-filter button:hover {
+  border-color: var(--gold);
+}
+
+.category-filter button.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--paper);
+}

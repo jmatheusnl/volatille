@@ -1,0 +1,28 @@
+.site-footer {
+  margin-top: auto;
+  background: var(--navy);
+  color: var(--mist);
+  text-align: center;
+  padding: 1rem 0.5rem 0.75rem;
+}
+
+.site-footer img {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 0.75rem;
+  object-fit: contain;
+}
+
+.site-footer__brand {
+  margin: 0;
+  font-family: 'Brittany Signature', 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  color: var(--mist);
+}
+
+.site-footer__motto {
+  margin: 0.35rem 0 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}

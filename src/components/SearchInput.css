@@ -1,0 +1,45 @@
+.search-input {
+  display: block;
+  width: min(100%, 26rem);
+  margin: 0 auto 2.25rem;
+}
+
+.search-input input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--mist);
+  color: var(--navy);
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input input::placeholder {
+  color: var(--muted);
+}
+
+.search-input input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(210, 172, 71, 0.18);
+}
+
+.search-input input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--gold);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.4 6.4l11.2 11.2M17.6 6.4L6.4 17.6' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0.55rem;
+  cursor: pointer;
+  margin-left: 0.35rem;
+}
+
+.search-input input::-ms-clear {
+  display: none;
+}
