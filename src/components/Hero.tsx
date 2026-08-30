@@ -1,3 +1,4 @@
+import { scrollToSection } from '../utils/scrollToSection'
 import './Hero.css'
 
 export function Hero() {
@@ -23,7 +24,14 @@ export function Hero() {
           Difusores de ambiente pensados para o dia a dia: fragrâncias suaves,
           florais, cítricas e herbais, em dois tamanhos para cada aroma.
         </p>
-        <a className="hero__cta" href="#catalogo">
+        <a
+          className="hero__cta"
+          href="#catalogo"
+          onClick={(e) => {
+            e.preventDefault()
+            scrollToSection('catalogo')
+          }}
+        >
           Ver catálogo
         </a>
       </div>
