@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { UseCartResult } from '../hooks/useCart'
+import type { OrderPayload } from '../types/Order'
 import { formatPrice } from '../utils/formatPrice'
 import { scrollToSection } from '../utils/scrollToSection'
 import './CartModal.css'
@@ -13,6 +14,8 @@ type CartModalProps = {
 export function CartModal({ isOpen, onClose, cart }: CartModalProps) {
   // Estado interno para alternar entre a visualização da sacola e a tela de confirmação
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false)
+  // Armazena os dados do pedido recém-criado para exibição do resumo e do payload JSON
+  const [lastOrder, setLastOrder] = useState<OrderPayload | null>(null)
 
   const handleClose = useCallback(() => {
     setIsOrderConfirmed(false)
@@ -47,8 +50,39 @@ export function CartModal({ isOpen, onClose, cart }: CartModalProps) {
 
   if (!isOpen) return null
 
-  // Ao finalizar compra fictícia: alterna para a tela de confirmação e limpa a sacola
+  // Finalização de compra fictícia com construção e emissão de payload estruturado
   const handleCheckout = () => {
+    if (cart.items.length === 0) return
+
+    // 1. Constrói o payload estruturado com todos os dados do pedido
+    const orderPayload: OrderPayload = {
+      orderId: `VOL-${Math.floor(100000 + Math.random() * 900000)}`,
+      createdAt: new Date().toISOString(),
+      currency: 'BRL',
+      items: cart.items.map((item) => ({
+        productId: item.product.id,
+        scent: item.product.scent,
+        size: item.product.size,
+        unitPrice: item.product.price,
+        quantity: item.quantity,
+        subtotal: item.product.price * item.quantity,
+      })),
+      totalItems: cart.totalItems,
+      totalAmount: cart.totalPrice,
+      status: 'confirmed',
+    }
+
+    // 2. Simula o envio de requisição HTTP POST para uma API / backend de checkout
+    console.groupCollapsed(
+      '%c📦 [Volatille Checkout] POST /api/orders (Simulação de Pedido)',
+      'color: #1d3557; background: #d2ac47; font-weight: bold; padding: 4px 8px; border-radius: 4px;'
+    )
+    console.log('Payload enviado para o servidor:', orderPayload)
+    console.log('Status retornado: 201 Created (Pedido recebido com sucesso)')
+    console.groupEnd()
+
+    // 3. Atualiza estado e limpa a sacola
+    setLastOrder(orderPayload)
     setIsOrderConfirmed(true)
     cart.clearCart()
   }
@@ -81,7 +115,7 @@ export function CartModal({ isOpen, onClose, cart }: CartModalProps) {
         </header>
 
         <div className="cart-modal__body">
-          {isOrderConfirmed ? (
+          {isOrderConfirmed && lastOrder ? (
             <div className="cart-modal__confirmation">
               <p className="ornament" aria-hidden="true">
                 ♡
@@ -89,10 +123,65 @@ export function CartModal({ isOpen, onClose, cart }: CartModalProps) {
               <h3 className="cart-modal__confirmation-heading">
                 Obrigado pelo seu pedido!
               </h3>
+              <p className="cart-modal__confirmation-order-id">
+                Código do pedido: <strong>{lastOrder.orderId}</strong>
+              </p>
               <p className="cart-modal__confirmation-text">
-                Seus difusores artesanais da Volatille serão separados com todo o
+                Seus difusores artesanais da Volatille serão preparados com todo o
                 cuidado para acolher o seu ambiente com aromas únicos.
               </p>
+
+              {/* Resumo visual do pedido */}
+              <div className="cart-modal__order-summary">
+                <h4 className="cart-modal__order-summary-title">
+                  Resumo da Compra
+                </h4>
+                <ul className="cart-modal__order-items">
+                  {lastOrder.items.map((item) => (
+                    <li key={item.productId} className="cart-modal__order-item">
+                      <span className="cart-modal__order-item-name">
+                        {item.quantity}× {item.scent} ({item.size})
+                      </span>
+                      <span className="cart-modal__order-item-price">
+                        {formatPrice(item.subtotal)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="cart-modal__order-total">
+                  <span>Valor total pago</span>
+                  <strong>{formatPrice(lastOrder.totalAmount)}</strong>
+                </div>
+              </div>
+
+              {/* Bloco expansível com o payload JSON para demonstração no vídeo / avaliação */}
+              <details className="cart-modal__payload-details">
+                <summary className="cart-modal__payload-summary">
+                  <svg
+                    className="cart-modal__payload-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                  <span>Ver payload JSON (Simulação POST)</span>
+                </summary>
+                <div className="cart-modal__payload-body">
+                  <p className="cart-modal__payload-desc">
+                    Payload estruturado gerado pelo checkout (também registrado no console via <code>POST /api/orders</code>):
+                  </p>
+                  <pre className="cart-modal__payload-code">
+                    <code>{JSON.stringify(lastOrder, null, 2)}</code>
+                  </pre>
+                </div>
+              </details>
+
               <p className="cart-modal__confirmation-notice">
                 (Este é um pedido demonstrativo do bootcamp. Nenhum pagamento
                 real foi cobrado.)
