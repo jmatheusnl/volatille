@@ -26,6 +26,6 @@ jobs:
           role-to-assume: arn:aws:iam::837749699431:role/github-actions-volatille-role
           aws-region: sa-east-1
 
-      - run: aws s3 sync dist/ s3://volatille-loja --delete
+      - run: aws s3 sync dist/ s3://volatille-loja --delete --exclude "video/*"
 
       - run: aws cloudfront create-invalidation --distribution-id E3S56ZN2YYH0Y --paths "/*"

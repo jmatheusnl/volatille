@@ -37,17 +37,28 @@
   gap: 1.25rem;
 }
 
-.site-header__nav a {
+.site-header__nav a,
+.site-header__nav-link {
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--mist);
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid transparent;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
 }
 
-.site-header__nav a:hover {
+.site-header__nav a:hover,
+.site-header__nav-link:hover {
+  color: var(--paper);
+  border-bottom-color: var(--gold);
+}
+
+.site-header__nav a.site-header__nav-link--active,
+.site-header__nav-link.site-header__nav-link--active {
+  color: var(--paper);
   border-bottom-color: var(--gold);
 }
 
