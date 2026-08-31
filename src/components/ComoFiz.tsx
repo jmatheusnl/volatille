@@ -162,7 +162,7 @@ export function ComoFiz() {
               </p>
               <div className="comofiz__diagram-image-wrapper">
                 <img
-                  src={`${import.meta.env.BASE_URL}images/diagrams/arquitetura-futura-bff.svg`}
+                  src={`${import.meta.env.BASE_URL}images/diagrams/arquitetura-atual-bff.svg`}
                   alt="Diagrama de arquitetura da Volatille com site web via CloudFront e app mobile via BFF acessando products.json no S3"
                   className="comofiz__diagram-img"
                   loading="lazy"
@@ -181,7 +181,7 @@ export function ComoFiz() {
               </p>
               <div className="comofiz__diagram-image-wrapper">
                 <img
-                  src={`${import.meta.env.BASE_URL}images/diagrams/arquitetura-atual-bff.svg`}
+                  src={`${import.meta.env.BASE_URL}images/diagrams/arquitetura-futura-bff.svg`}
                   alt="Diagrama de arquitetura avançada com Web BFF e Mobile BFF comunicando-se com Backend compartilhado e Banco de Dados"
                   className="comofiz__diagram-img"
                   loading="lazy"
